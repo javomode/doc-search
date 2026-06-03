@@ -1,0 +1,42 @@
+[project]
+name = "doc-search"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jaden Vo", email = "jaden.p.vo@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pypdf>=6.12.2",
+    "typer>=0.26.6",
+]
+
+[project.scripts]
+doc-search = "doc_search:main"
+
+[build-system]
+requires = ["uv_build>=0.11.9,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.15",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[project.scripts]
+docsearch = "docsearch.cli:app"
