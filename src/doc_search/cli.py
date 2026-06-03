@@ -1,5 +1,7 @@
 import typer
 
+from doc_search.indexer import find_text_files
+
 app = typer.Typer(
     help="Command-line tool that indexes and searches document collections."
 )
@@ -8,7 +10,12 @@ app = typer.Typer(
 @app.command()
 def index(path: str):
     """Index a directory of documents."""
-    print(f"Indexing {path}")
+    files = find_text_files(path)
+
+    print(f"Found {len(files)} text files.")
+
+    for file in files:
+        print(file)
 
 
 @app.command()
