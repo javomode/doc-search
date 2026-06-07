@@ -1,0 +1,14 @@
+[
+  {
+    "path": "sample_docs\\a.txt",
+    "text": "This place is full of smart people."
+  },
+  {
+    "path": "sample_docs\\b.txt",
+    "text": "This picture is truly beautiful."
+  },
+  {
+    "path": "sample_docs\\test_folder\\c.txt",
+    "text": "This place is beautiful."
+  }
+]
