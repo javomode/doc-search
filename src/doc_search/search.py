@@ -16,4 +16,7 @@ def get_snippet(text: str, query: str, context: int = 40) -> str:
 
     snippet = text[start:end]
 
-    return f"...{snippet}..."
+    prefix = "..." if start > 0 else ""
+    suffix = "..." if end < len(text) else ""
+
+    return f"{prefix}{snippet}{suffix}"
