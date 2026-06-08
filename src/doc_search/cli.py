@@ -1,8 +1,8 @@
 import typer
 
-from doc_search.indexer import build_index, read_text_file
-from doc_search.storage import load_index, save_index
+from doc_search.indexer import build_index
 from doc_search.search import get_snippet
+from doc_search.storage import load_index, save_index
 
 app = typer.Typer(
     help="Command-line tool that indexes and searches document collections."
@@ -21,10 +21,7 @@ def index(path: str):
 
 
 @app.command()
-def search(
-    query: str,
-    snippet: bool = typer.Option(False, "--snippet", "-s")
-):
+def search(query: str, snippet: bool = typer.Option(False, "--snippet", "-s")):
     """Search indexed documents."""
     documents = load_index()
 
