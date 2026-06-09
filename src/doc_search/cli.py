@@ -23,7 +23,12 @@ def index(path: str):
 @app.command()
 def search(query: str, snippet: bool = typer.Option(False, "--snippet", "-s")):
     """Search indexed documents."""
-    documents = load_index()
+    try:
+        documents = load_index()
+    except FileNotFoundError:
+        print("No index found.")
+        print("Run: docsearch index <directory>")
+        return
 
     for doc in documents:
         if query.lower() in doc["text"].lower():
@@ -36,7 +41,44 @@ def search(query: str, snippet: bool = typer.Option(False, "--snippet", "-s")):
 @app.command()
 def stats():
     """Show index statistics."""
-    print("Showing statistics")
+    try:
+        documents = load_index()
+    except FileNotFoundError:
+        print("No index found.")
+        print("Run: docsearch index <directory>")
+        return
+    document_count = len(documents)
+
+    # number of document
+    txt_count = 0
+    pdf_count = 0
+
+    for doc in documents:
+        path = doc["path"].lower()
+
+        if path.endswith(".txt"):
+            txt_count += 1
+
+        elif path.endswith(".pdf"):
+            pdf_count += 1
+
+    total_characters = 0
+
+    # sum of characters
+    for doc in documents:
+        total_characters += len(doc["text"])
+
+    # average document length
+    if document_count > 0:
+        average_length = total_characters / document_count
+    else:
+        average_length = 0
+
+    print(f"Documents indexed: {document_count}")
+    print(f"TXT files: {txt_count}")
+    print(f"PDF files: {pdf_count}")
+    print(f"Total characters indexed: {total_characters}")
+    print(f"Average document length: {average_length:.0f} characters")
 
 
 if __name__ == "__main__":

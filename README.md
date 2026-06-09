@@ -53,7 +53,7 @@ sample_docs/vacation_policy.txt
 ...benefits include paid sick leave and vacation...
 View Statistics
 
-<!-- To display index statistics:
+To display index statistics:
 
 docsearch stats
 
@@ -64,10 +64,17 @@ docsearch stats
 Output:
 
 Documents indexed: 42
-Typical Workflow
+
+## Typical Workflow
+
 Index a directory:
-docsearch index sample_docs
+
+`docsearch index sample_docs`
+
 Search the indexed documents:
-docsearch search "benefits"
+
+`docsearch search "benefits"`
+
 Search with context snippets:
-docsearch search -s "benefits" -->
+
+`docsearch search -s "benefits"`
