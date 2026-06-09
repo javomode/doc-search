@@ -2,9 +2,11 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
+
 # find text files
 def find_text_files(root: str) -> list[Path]:
     return list(Path(root).rglob("*.txt"))
+
 
 # find pdf files
 def find_pdf_files(root: str) -> list[Path]:
@@ -14,6 +16,7 @@ def find_pdf_files(root: str) -> list[Path]:
 # read a text file
 def read_text_file(path: Path) -> str:
     return path.read_text(encoding="utf-8")
+
 
 # read a pdf file
 def read_pdf_file(path: Path) -> str:
@@ -27,7 +30,8 @@ def read_pdf_file(path: Path) -> str:
     return text
 
 
-# store document path, text based on file type as dict, later store each document in JSON
+# store document path, text based on file type as dict,
+# later store each document in JSON
 def create_document(path: Path) -> dict:
     if path.suffix.lower() == ".txt":
         text = read_text_file(path)
