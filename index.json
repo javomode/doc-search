@@ -10,5 +10,13 @@
   {
     "path": "sample_docs\\test_folder\\c.txt",
     "text": "This place is beautiful."
+  },
+  {
+    "path": "sample_docs\\test1.pdf",
+    "text": "Hello,  this  place  is  made  to  test  pdf  functionality.  "
+  },
+  {
+    "path": "sample_docs\\test_folder\\test2.pdf",
+    "text": "I  am  just  a  pdf!  "
   }
 ]
